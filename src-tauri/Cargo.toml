@@ -1,0 +1,30 @@
+[package]
+name = "depom-security-scanner"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.77"
+
+[[bin]]
+name = "depom-scanner"
+path = "src/main.rs"
+
+[dependencies]
+tauri = { version = "2.0", features = ["protocol-asset"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.37", features = ["full"] }
+sha2 = "0.10"
+hex = "0.4"
+walkdir = "2.5"
+chrono = { version = "0.4", features = ["serde"] }
+log = "0.4"
+env_logger = "0.11"
+thiserror = "1.0"
+regex = "1.10"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
